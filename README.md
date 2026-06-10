@@ -21,8 +21,8 @@ L'application est un Pokédex full-stack : une API REST FastAPI connectée à un
 ## Installation
 
 ```bash
-git clone https://github.com/TON_USER/TON_REPO.git
-cd TON_REPO
+git clone https://github.com/ZakariyaFELLAH/Pokedex.git
+cd Pokedex
 cp .env.example .env
 ```
 
