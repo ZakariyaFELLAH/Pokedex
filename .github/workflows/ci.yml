@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      db:
+        image: mariadb:11
+        env:
+          MYSQL_ROOT_PASSWORD: RootTest
+          MYSQL_DATABASE: pokedex
+          MYSQL_USER: dresseur
+          MYSQL_PASSWORD: testpassword
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=5s
+          --health-timeout=10s
+          --health-retries=10
+          --health-start-period=30s
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: pip install fastapi uvicorn mysql-connector-python python-multipart httpx pytest pytest-asyncio
+
+      - name: Init DB schema
+        run: |
+          mysql -h 127.0.0.1 -P 3306 -uroot -pRootTest pokedex < database/init/01_schema.sql
+
+      - name: Run tests
+        env:
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_NAME: pokedex
+          DB_USER: dresseur
+          DB_PASSWORD: testpassword
+        run: pytest tests/ -v
+
+  docker-build:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build image Docker
+        run: docker build -t pokemon-api .
