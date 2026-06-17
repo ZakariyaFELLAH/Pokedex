@@ -29,7 +29,7 @@ services:
     container_name: pokemon_api
     restart: unless-stopped
     ports:
-      - "8080:8001"
+      - "8081:8001"
     environment:
       DB_HOST: db
       DB_PORT: 3306
