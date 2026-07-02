@@ -6,3 +6,4 @@ __pycache__/
 .Python
 *.db
 .DS_Store
+config.js

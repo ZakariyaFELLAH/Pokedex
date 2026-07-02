@@ -31,8 +31,14 @@ Remplis les mots de passe dans le fichier `.env` puis lance :
 ```bash
 make start
 ```
+## Configuration
+Copier config.example.js en config.js et remplacer VOTRE_IP par votre adresse IP.
 
-L'application est disponible sur **http://localhost:8000**
+```bash
+cp config.example.js config.js
+````
+
+L'application est disponible sur **http://localhost:8081**
 
 ## Commandes
 
@@ -60,6 +66,7 @@ L'application est disponible sur **http://localhost:8000**
 │   ├── index.html
 │   ├── style.css
 │   ├── script.js
+│   ├── config.example.js       
 │   ├── images/                 # PNG des Pokémon
 │   └── sound/                  # Effets sonores
 ├── tests/                      # Tests pytest
