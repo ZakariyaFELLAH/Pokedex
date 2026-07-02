@@ -1,6 +1,5 @@
 // ===== CONFIG =====
-const API_URL = window.ENV_API_URL || "http://localhost:8081";
-
+const API_URL = "http://localhost:8081";
 
 // ===== SONS =====
 const soundBg   = new Audio("/static/sound/background.mp3");
