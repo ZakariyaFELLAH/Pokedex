@@ -5,6 +5,7 @@ from fastapi.responses import FileResponse
 from database.db import get_connection
 from pydantic import BaseModel
 from typing import Optional, List
+from fastapi.responses import RedirectResponse
 import json
 import os
 import shutil
@@ -36,7 +37,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
 def root():
-    return FileResponse("static/index.html")
+    return RedirectResponse(url="/static/index.html")
 
 @app.get("/pokemons")
 def get_pokemons():
