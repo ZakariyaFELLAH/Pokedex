@@ -37,7 +37,7 @@ jobs:
           python-version: "3.13"
 
       - name: Install dependencies
-        run: pip install fastapi uvicorn mysql-connector-python python-multipart httpx pytest pytest-asyncio
+        run: pip install fastapi uvicorn mysql-connector-python python-multipart httpx pytest pytest-asyncio boto3
 
       - name: Init DB schema
         run: |
