@@ -9,6 +9,7 @@ from fastapi.responses import RedirectResponse
 import json
 import os
 import shutil
+import boto3
 
 class PokemonCreate(BaseModel):
     id: int
@@ -57,13 +58,18 @@ async def create_pokemon(
     pokemon = PokemonCreate(**json.loads(data))
 
     filename = f"{str(pokemon.id).zfill(3)}.png"
-    filepath = f"static/images/{filename}"
-    os.makedirs("static/images", exist_ok=True)
+    s3_key = f"images/{filename}"
 
-    with open(filepath, "wb") as buffer:
-        shutil.copyfileobj(file.file, buffer)
+    # Upload direct vers S3 (plus besoin de sauvegarder en local)
+    s3_client.upload_fileobj(
+        file.file,
+        S3_BUCKET_NAME,
+        s3_key,
+        ExtraArgs={"ContentType": "image/png"}
+    )
 
-    pokemon.image_url = f"/static/images/{filename}"
+    # Génère l'URL S3 publique
+    pokemon.image_url = f"https://{S3_BUCKET_NAME}.s3.{os.getenv('AWS_REGION')}.amazonaws.com/{s3_key}"
 
     conn = get_connection()
     cursor = conn.cursor()
