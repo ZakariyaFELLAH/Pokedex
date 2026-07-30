@@ -6,7 +6,7 @@ Ce guide résume les étapes suivies pour déployer l'application Pokédex (Fast
 
 **Architecture finale** : EC2 + RDS + S3 + CloudWatch, orchestrés via Coolify avec déploiement continu depuis GitHub.
 
-![Architecture AWS](Architecture AWS - Statique .drawio.png)
+![Architecture AWS](img/Architecture%20AWS%20-%20Statique%20.drawio.png)
 
 ---
 
