@@ -78,7 +78,7 @@ L'application est disponible sur **http://localhost:8081**
 
 ## Structure
 ```
-.
+
 ├── main.py # API FastAPI
 ├── database/
 │ ├── db.py # Connexion MariaDB
@@ -104,7 +104,6 @@ L'application est disponible sur **http://localhost:8081**
 ├── requirements.txt
 └── .env.example
 
-...
 ```
 ---
 
