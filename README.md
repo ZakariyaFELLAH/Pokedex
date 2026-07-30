@@ -4,7 +4,7 @@ Projet réalisé en stage DevOps pour pratiquer **Git**, **Docker**, **Docker Co
 
 L'application est un Pokédex full-stack : une API REST FastAPI connectée à une base **MariaDB**, avec un front-end vanilla JS, containerisée et déployée sur une infrastructure cloud **AWS** (EC2, RDS, S3, CloudWatch).
 
-**Démo en ligne** : [https://bn5oxjg0bpwv3sx5ud98y54n-13-61-52-80.sslip.io](https://bn5oxjg0bpwv3sx5ud98y54n-13-61-52-80.sslip.io)
+**Démo en ligne** : [https://bn5oxjg0bpwv3sx5ud98y54n-13-61-52-80.sslip.io](https://bn5oxjg0bpwv3sx5ud98y54n-13-61-52-80.sslip.io) (Indisponible)
 
 ---
 
@@ -77,6 +77,7 @@ L'application est disponible sur **http://localhost:8081**
 ---
 
 ## Structure
+```
 .
 ├── main.py # API FastAPI
 ├── database/
@@ -102,6 +103,9 @@ L'application est disponible sur **http://localhost:8081**
 ├── Makefile
 ├── requirements.txt
 └── .env.example
+
+...
+```
 ---
 
 ## CI/CD
